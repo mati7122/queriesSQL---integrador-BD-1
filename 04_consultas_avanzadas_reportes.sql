@@ -3,34 +3,33 @@
 
 -- CONSULTA JOIN 1:
 
-SELECT E.razon, E.cuit, D.pais
+SELECT E.razonSocial, E.cuit, D.pais
 FROM Empresa as E
-JOIN DomicilioFiscal as D ON E.domicilioFiscal = D.id
+JOIN DomicilioFiscal as D ON E.domicilioFiscal_id = D.id
 WHERE E.eliminado = 0;
 
 
 -- CONSULTA JOIN 2:
 
-SELECT E.email, D.calle, D.numero, D.ciudad
+SELECT E.email, D.calle, D.numero, D.ciudad, E.actividadPrincipal
 FROM Empresa as E
-JOIN DomicilioFiscal as D ON E.domicilioFiscal = D.id
-WHERE E.actividadPrincipal = 'Desarrollo de Software';
-
+JOIN DomicilioFiscal as D ON E.domicilioFiscal_id = D.id
+WHERE E.actividadPrincipal = 'Actividad1';
 
 -- CONSULTA GROUP BY + HAVING:
-
+-- revisar
 SELECT D.ciudad, COUNT(E.id) as CantidadEmpresas
 FROM Empresa as E
-JOIN DomicilioFiscal as D ON E.domicilioFiscal = D.id
+JOIN DomicilioFiscal as D ON E.domicilioFiscal_id = D.id
 GROUP BY D.ciudad
 HAVING COUNT(E.id) > 100
 ORDER BY CantidadEmpresas DESC;
 
 -- CONSULTA CON SUBCONSULTA:
-
+-- revisar
 SELECT razonSocial, cuit
 FROM Empresa
-WHERE domicilioFiscal IN(
+WHERE domicilioFiscal_id IN(
 	SELECT id
 	FROM DomicilioFiscal
 	WHERE LENGTH(codigoPostal) > 8
@@ -55,7 +54,7 @@ WHERE E.eliminado = 0;
 
 SELECT E.razonSocial, E.cuit, D.pais
 FROM Empresa AS E
-JOIN DomicilioFiscal AS D ON E.domicilioFiscal = D.id
+JOIN DomicilioFiscal AS D ON E.domicilioFiscal_id = D.id
 WHERE E.eliminado = 0;
 
 -- Índice aplicado:
@@ -68,8 +67,8 @@ CREATE INDEX idx_eliminado ON Empresa(eliminado);
 
 SELECT D.ciudad, COUNT(E.id) AS CantidadEmpresas
 FROM Empresa AS E
-JOIN DomicilioFiscal AS D ON E.domicilioFiscal = D.id
-WHERE D.ciudad LIKE 'Cip%'
+JOIN DomicilioFiscal AS D ON E.domicilioFiscal_id = D.id
+WHERE D.ciudad LIKE '%2%'
 GROUP BY D.ciudad
 ORDER BY CantidadEmpresas DESC;
 
@@ -83,8 +82,8 @@ CREATE INDEX idx_ciudad ON DomicilioFiscal(ciudad);
 
 SELECT E.email, D.calle, D.numero, D.ciudad
 FROM Empresa AS E
-JOIN DomicilioFiscal AS D ON E.domicilioFiscal = D.id
-WHERE E.actividadPrincipal = 'Desarrollo de Software';
+JOIN DomicilioFiscal AS D ON E.domicilioFiscal_id = D.id
+WHERE E.actividadPrincipal = 'Actividad3';
 
 -- Índices aplicados:
 

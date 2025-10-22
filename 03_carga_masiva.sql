@@ -209,3 +209,5 @@ SELECT * FROM empresa ORDER BY id LIMIT 5;
 SELECT * FROM domicilioFiscal ORDER BY id DESC LIMIT 5;
 SELECT * FROM empresa ORDER BY id DESC LIMIT 5;
 
+
+

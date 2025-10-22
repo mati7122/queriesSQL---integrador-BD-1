@@ -6,8 +6,8 @@
 INSERT INTO domicilioFiscal (calle, numero, ciudad, provincia, codigoPostal, pais)
 VALUES ('Av. Corrientes', 1234, 'Buenos Aires', 'CABA', 'C1043', 'Argentina');
 
-INSERT INTO empresa (razonSocial, cuit, actividadPrincipal, email, domicilioFiscal_id)
-VALUES ('Tecnología Avanzada SA', '20123456789', 'Desarrollo de Software', 'contacto@tecavanzada.com.ar', 1);
+INSERT INTO empresa (razonSocial, cuit, actividadPrincipal, email)
+VALUES ('Tecnología Avanzada SA', '20123456789', 'Desarrollo de Software', 'contacto@tecavanzada.com.ar');
 
 -- Inserción correcta 2: Empresa sin domicilio asignado aún
 INSERT INTO domicilioFiscal (calle, ciudad, provincia, pais)
