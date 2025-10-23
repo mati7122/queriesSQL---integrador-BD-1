@@ -2,7 +2,9 @@
 
 -- create database finalIntegradorBD;
 -- use finalIntegradorBD;
-use finalIntegradoDB;
+DROP SCHEMA IF EXISTS finalIntegradorDB;
+CREATE SCHEMA IF NOT EXISTS finalIntegradorDB;
+use finalIntegradorDB;
 
 drop table if exists empresa, domicilioFiscal;
 
