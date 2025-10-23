@@ -12,10 +12,7 @@ FLUSH PRIVILEGES;
 select * from empresa where id = 1;
 
 START TRANSACTION;
-UPDATE empresa SET cuit = 12345 where id = 1;
-
--- START TRANSACTION;
--- UPDATE empresa SET eliminado = 0 where id = 1;
+UPDATE empresa SET eliminado = 0 where id = 1;
 
 SHOW PROCESSLIST;
 
