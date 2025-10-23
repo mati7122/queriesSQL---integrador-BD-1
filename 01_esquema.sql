@@ -4,7 +4,7 @@
 -- use finalIntegradorBD;
 use finalIntegradoDB;
 
-drop table empresa, domicilioFiscal;
+drop table if exists empresa, domicilioFiscal;
 
 -- table domicilio fiscal
 CREATE TABLE domicilioFiscal (
