@@ -2,7 +2,7 @@
 
 -- create database finalIntegradorBD;
 -- use finalIntegradorBD;
-use test2;
+use finalIntegradoDB;
 
 drop table empresa, domicilioFiscal;
 
