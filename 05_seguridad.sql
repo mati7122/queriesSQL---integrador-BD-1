@@ -1,6 +1,6 @@
 
 -- Etapa 4: Seguridad e integridad
-
+use finalIntegradorDB;
 -- Creación de usuario con privilegios mínimos (sólo lectura)
 
 CREATE USER 'usuario_vista'@'%' IDENTIFIED BY '1234';

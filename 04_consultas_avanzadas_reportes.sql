@@ -1,4 +1,4 @@
-
+use finalIntegradorDB;
 --  Desarrollo de consultas complejas con JOIN, GROUP BY, HAVING, subconsultas y vistas. 
 
 -- CONSULTA JOIN 1:
@@ -37,10 +37,10 @@ WHERE domicilioFiscal_id IN(
 
 -- VISTA: Mostrar razonSocial, email, calle, numero, ciudad, provincia. (Datos de contacto)
 
-CREATE VIEW Vista_Contactos_Empresariales AS
+CREATE VIEW IF NOT EXISTS Vista_Contactos_Empresariales AS
 SELECT E.razonSocial, E.email, D.calle, D.numero, D.ciudad, D.provincia, D.pais
 FROM Empresa as E
-JOIN DomicilioFiscal as D ON E.domicilioFiscal = D.id
+JOIN DomicilioFiscal as D ON E.domicilioFiscal_id = D.id
 WHERE E.eliminado = 0;
 
 -- ============================================
@@ -88,7 +88,7 @@ WHERE E.actividadPrincipal = 'Actividad3';
 -- Índices aplicados:
 
 CREATE INDEX idx_actividad ON Empresa(actividadPrincipal);
-CREATE INDEX idx_fk_domicilio ON Empresa(domicilioFiscal);
+CREATE INDEX idx_fk_domicilio ON Empresa(domicilioFiscal_id);
 
 -- ============================================
 -- RESULTADOS DE LAS MEDICIONES
@@ -98,6 +98,6 @@ CREATE INDEX idx_fk_domicilio ON Empresa(domicilioFiscal);
 
 -- Rango - GROUP BY + LIKE (D.ciudad LIKE 'Cip%') - Con índice: 4.5ms, Sin índice: 21.9ms, Mediana: 4.5ms
 
--- JOIN - JOIN 2 (E.domicilioFiscal = D.id) - Con índice: 5.8ms, Sin índice: 15.6ms, Mediana: 5.8ms
+-- JOIN - JOIN 2 (E.domicilioFiscal_id = D.id) - Con índice: 5.8ms, Sin índice: 15.6ms, Mediana: 5.8ms
 
 

@@ -1,7 +1,7 @@
 -- validación del modelo
 
 -- CASOS VÁLIDOS
-
+use finalIntegradorDB;
 -- Inserción correcta 1: Empresa completa con domicilio
 INSERT INTO domicilioFiscal (calle, numero, ciudad, provincia, codigoPostal, pais)
 VALUES ('Av. Corrientes', 1234, 'Buenos Aires', 'CABA', 'C1043', 'Argentina');

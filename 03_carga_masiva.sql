@@ -2,7 +2,7 @@
 -- ============================================
 -- SP Generar Domicilios
 -- ============================================
-
+use finalIntegradorDB;
 DROP PROCEDURE IF EXISTS generarDomicilios;
 
 DELIMITER $$
@@ -209,5 +209,11 @@ SELECT * FROM empresa ORDER BY id LIMIT 5;
 SELECT * FROM domicilioFiscal ORDER BY id DESC LIMIT 5;
 SELECT * FROM empresa ORDER BY id DESC LIMIT 5;
 
+-- Limpiar tablas
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE empresa;
+TRUNCATE TABLE domicilioFiscal;
+ALTER TABLE empresa AUTO_INCREMENT = 1;
+ALTER TABLE domicilioFiscal AUTO_INCREMENT = 1;
 
 

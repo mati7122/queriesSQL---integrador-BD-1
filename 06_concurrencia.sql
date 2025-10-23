@@ -1,6 +1,6 @@
 
 -- Etapa 5: Concurrencia y transacciones
-
+use finalIntegradorDB;
 -- TRANSACCIÓN 1: 
 
 START TRANSACTION;
